@@ -40,3 +40,13 @@ function playRound(playerSelection, computerSelection) {
     return text;
 }
 
+// function to get playerSelection and check if valid
+
+function getPlayerSelection() {
+    let userInput = prompt('Rock, Paper or Scissors', '').toLowerCase();
+    if (userInput === 'rock' || userInput === 'scissor' || userInput === 'paper') {
+        return userInput;
+    } else {
+        alert('Please enter a valid answer!');
+    }
+}
