@@ -11,20 +11,15 @@ function getComputerChoice() {
 
 }
 const main = document.getElementById('main');
-const images = document.querySelectorAll('img');
+const buttons = document.querySelectorAll('.images>button');
 const scoreFinal = document.querySelectorAll('.final-score');
 const divResults = document.createElement('div');
 const divFinal = document.createElement('div');
 divResults.classList.add('results');
 divFinal.classList.add('results');
 
-function disable () {
-    images.forEach(image => {
-        image.removeEventListener('click', () => {
-            playRound(image.alt.toLowerCase())
-        })
-    });
-}
+
+
 
 function reloadButton() {
     const reloadBtn = document.createElement('button');
@@ -34,6 +29,10 @@ function reloadButton() {
     reloadBtn.addEventListener('click', () => {
         window.location.reload();
     })
+}
+
+function disable () {
+    buttons.forEach(button => button.disabled = true);
 }
 
 // function to play single round
@@ -50,8 +49,7 @@ function playRound(playerSelection) {
             main.appendChild(divResults);   
 
             if (computerScore === 5) {
-                divFinal.textContent = `You loose. You scored ${playerScore} out of 5`;
-                
+                divFinal.textContent = 'You Loose! Maybe this is not for you';
                 reloadButton();
                 main.appendChild(divFinal);
                 disable();
@@ -66,11 +64,10 @@ function playRound(playerSelection) {
             main.appendChild(divResults);
 
             if (playerScore === 5) {
-                divFinal.textContent = `You Win. You scored ${playerScore} out of 5`
-                
+                divFinal.textContent = 'You Win! Computers are dumb'
                 reloadButton();
                 main.appendChild(divFinal);
-                disable();
+               disable();
             }
     } else {
             divResults.textContent = `You both choose ${playerSelection}`;
@@ -78,10 +75,9 @@ function playRound(playerSelection) {
     }    
 }
 
-images.forEach(image => {
-    
-    image.addEventListener('click', () => {
-        playRound(image.alt.toLowerCase());
-    });
-    
+buttons.forEach(button => {  
+    button.addEventListener('click', () => {
+        playRound(button.value.toLowerCase());
+        
+    })      
 });
