@@ -24,7 +24,7 @@ divFinal.classList.add('results');
 function reloadButton() {
     const reloadBtn = document.createElement('button');
     reloadBtn.textContent = 'Play Again';
-    reloadBtn.style.cssText = 'display:block; margin: 10px auto; padding: 10px 20px';
+    reloadBtn.classList.add('reload');
     divFinal.appendChild(reloadBtn);
     reloadBtn.addEventListener('click', () => {
         window.location.reload();
@@ -45,7 +45,7 @@ function playRound(playerSelection) {
     (playerSelection === 'paper' && computerSelection === 'scissors')) {
             computerScore ++;
             scoreFinal[1].textContent = computerScore; 
-            divResults.textContent = `${computerSelection} beats ${playerSelection}`;
+            divResults.textContent = `${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
             main.appendChild(divResults);   
 
             if (computerScore === 5) {
@@ -60,7 +60,7 @@ function playRound(playerSelection) {
        (playerSelection === 'rock' && computerSelection === 'scissors')) {
             playerScore ++
             scoreFinal[0].textContent = playerScore; 
-            divResults.textContent = `${playerSelection} beats ${computerSelection}`;
+            divResults.textContent = `${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
             main.appendChild(divResults);
 
             if (playerScore === 5) {
